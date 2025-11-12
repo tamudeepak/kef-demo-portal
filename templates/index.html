@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero text-white text-center p-5 rounded" style="background: linear-gradient(135deg,#0d6efd,#6610f2);">
+  <h1 class="display-5">Welcome to KEF Demo Portal</h1>
+  <p class="lead">High-fidelity audio meets modern engineering — demo landing page.</p>
+  <a href="#featured" class="btn btn-light btn-lg">Explore products</a>
+</section>
+
+<section id="featured" class="mt-5">
+  <h2 class="mb-4">Featured Products</h2>
+  <div class="row g-4">
+    {% for p in featured %}
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ p.img }}" class="card-img-top" alt="{{ p.title }}">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ p.title }}</h5>
+          <p class="card-text small">{{ p.desc }}</p>
+          <div class="mt-auto d-flex justify-content-between align-items-center">
+            <strong>£{{ "%.2f"|format(p.price) }}</strong>
+            <a href="#" class="btn btn-primary btn-sm">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="about" class="mt-5">
+  <h3>About this demo</h3>
+  <p>This is a minimal Flask-powered storefront front page for demo and learning. It showcases templates, static assets and a simple route.</p>
+</section>
+{% endblock %}
